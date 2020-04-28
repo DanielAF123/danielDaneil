@@ -1,0 +1,35 @@
+#anadir{
+    width: 50%;
+    position: relative;
+    left: 10%;
+    top: 10px;
+    height: 160vh;
+    font-size: 1.2em;
+}
+label{
+    font-size: 1.8em;
+    margin: 10px;
+}
+#botones{
+    position: relative;
+    top: 100px;
+    left: 30%;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.button{
+    font-size: 1.5em;
+}
+#formulario{
+    position: relative;
+    left: 30%;
+}
+#formulario div{
+    display: flex;
+    flex-direction: column;
+
+}
+.input{
+    font-size: 1.3em;
+}

@@ -1,0 +1,54 @@
+<header id="header">
+    <div id="favicon">
+        <img src="../assets/handy-man-worker-silhouette.png" width="40px" height="40px" alt="favicon">
+    </div>
+    <div id="info">
+        <a href="">Texto Prueba</a>
+        <a href="">Texto Prueba</a>
+        <a href="">Texto Prueba</a>
+        <a href="">Texto Prueba</a>
+    </div>
+    <div id="usuario" >
+        <a routerLink="/cerrarSesion">Cerrar sesion</a>
+        <a routerLink="/actualizarUsuario">Actualizar Usuario</a>
+        <a routerLink="/eliminarUsuario">Eliminar Usuario</a>
+    </div>
+</header>
+<aside id="aside">
+    <nav>
+        <ul id="listaNav">
+            <a routerLink="/">
+                <li>
+                    Inicio
+                </li>
+            </a>
+            <a routerLink="/about">
+                <li>
+                    about
+                </li>
+            </a>
+            <div id="usuarioExiste">
+            <a routerLink="/eliminarTrabajador">
+                <li>
+                    eliminar Trabajador
+                </li>
+            </a>
+            <a routerLink="/visualizarTrabajador">
+                <li>
+                    visualizar Trabajador
+                </li>
+            </a>
+        </div>
+        </ul>
+    </nav>
+</aside>
+<div id="pagina"><span id="texto"></span></div>
+<div id="fondo"></div>
+<div id="rutas">
+<router-outlet></router-outlet>
+</div>
+<!--Crear documentacion y que le jodan al trabajo-->
+
+
+
+

@@ -1,0 +1,15 @@
+<div id="anadir">
+    <form (ngSubmit)="recuperarContrasena(Nombre)" [formGroup]="formGroup1" autocomplete="off">
+    <div id="formulario">
+        <div class="div">
+            <label for="Nombre" class="label">Nombre/Correo</label>
+            <input type="text" class="input" #Nombre  formControlName="Nombre" id="Nombre"><br>
+            <label *ngIf=" formGroup1.get('Nombre').hasError('required')" [ngClass] = "'error'">Nombre/Correo obligatorio. </label>
+        </div>
+        <div id="botones">
+            <input type="submit" class="button" value="Recuperar contraseña" [disabled]="formGroup1.invalid">
+            <input class="button" (click)="login()" value="Login">
+        </div>
+    </div>
+    </form>
+</div>

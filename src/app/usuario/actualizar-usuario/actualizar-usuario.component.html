@@ -1,0 +1,44 @@
+<div id="anadir">
+    <form (ngSubmit)="actualizarUsuario(Nombre,Email)" [formGroup]="formGroup1" autocomplete="off">
+    <div id="formulario">
+        <div class="div">
+            <label for="Nombre" class="label">Nombre de Usuario</label>
+            <input type="text" class="input" #Nombre  formControlName="Nombre" id="Nombre"><br>
+            <label *ngIf=" formGroup1.get('Nombre').hasError('required')" [ngClass] = "'error'">Nombre obligatorio. </label>
+        </div>
+        
+        <div class="div">
+            <label for="Email" class="label">Email del Usuario</label>
+            <input type="text" class="input" #Email  formControlName="Email" id="Email"><br>
+            <label *ngIf=" formGroup1.get('Email').hasError('required')" [ngClass] = "'error'">Email obligatorio. </label>
+        </div>
+        <div id="botones">
+            <input type="submit" class="button" value="Actualizar Usuario" [disabled]="formGroup1.invalid">
+        </div>
+    </div>
+    </form>
+    
+    <form (ngSubmit)="actualizarContrasenaUsuario(ContrasenaUsuario,Contrasena,Contrasena2)" [formGroup]="formGroup2" autocomplete="off">
+        <div id="formulario">
+            <div class="div">
+                <label for="ContrasenaUsuario" class="label">Contraseña Actual</label>
+                <input type="password" class="input" #ContrasenaUsuario formControlName="ContrasenaUsuario" id="ContrasenaUsuario"><br>
+                <label *ngIf=" formGroup2.get('ContrasenaUsuario').hasError('required')" [ngClass] = "'error'">Contraseña obligatoria. </label>
+            </div>
+            <div class="div">
+                <label for="Contrasena" class="label">Contraseña Nueva</label>
+                <input type="password" class="input" #Contrasena formControlName="Contrasena" id="Contrasena"><br>
+                <label *ngIf=" formGroup2.get('Contrasena').hasError('required')" [ngClass] = "'error'">Contraseña obligatoria. </label>
+            </div>
+            <div class="div">
+                <label for="Contrasena2" class="label">Repita la Contraseña</label>
+                <input type="password" class="input" #Contrasena2 formControlName="Contrasena2" id="Contrasena2"><br>
+                <label *ngIf=" formGroup2.get('Contrasena2').hasError('required')" [ngClass] = "'error'">Contraseña obligatoria. </label>
+            </div>
+            <div id="botones">
+                <input type="submit" class="button" value="Actualizar Contraseña" [disabled]="formGroup1.invalid">
+            </div>
+        </div>
+        </form>
+
+</div>

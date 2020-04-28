@@ -1,0 +1,49 @@
+<div id="anadir">
+<form (ngSubmit)="anadirTrabajador([Nombre,Apellidos,FechaNac,Ocupacion,Sueldo],formulario)" #formulario [formGroup]="formGroup1" autocomplete="off">
+<div id="formulario">
+    <div>
+        <label for="Nombre" class="label">Nombre</label>
+        <input type="text" class="input" #Nombre  formControlName="Nombre" id="Nombre"><br>
+        <label *ngIf=" formGroup1.get('Nombre').hasError('required')" [ngClass] = "'error'">Nombre obligatorio. </label>
+        <label *ngIf=" formGroup1.get('Nombre').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div>
+        <label for="Apellidos" class="label">Apellidos</label>
+        <input type="text" class="input" #Apellidos formControlName="Apellidos" id="Apellidos"><br>
+        <label *ngIf=" formGroup1.get('Apellidos').hasError('required')" [ngClass] = "'error'">Apellidos obligatorio. </label>
+        <label *ngIf=" formGroup1.get('Apellidos').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div>
+        <label for="FechaNac" class="label">FechaNac</label>
+        <input type="date" class="input" #FechaNac formControlName="FechaNac" id="FechaNac"><br>
+        <label *ngIf=" formGroup1.get('FechaNac').hasError('required')" [ngClass] = "'error'">FechaNac obligatorio. </label>
+    </div>
+
+    <div>
+        <label for="Ocupacion" class="label">Ocupacion</label>
+        <input type="text"class="input"  #Ocupacion formControlName="Ocupacion" id="Ocupacion"><br>
+        <label *ngIf=" formGroup1.get('Ocupacion').hasError('required')" [ngClass] = "'error'">Ocupacion obligatorio. </label>
+        <label *ngIf=" formGroup1.get('Ocupacion').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div>
+        <label for="Sueldo" class="label">Sueldo</label>
+        <input type="number" class="input" #Sueldo formControlName="Sueldo" id="Sueldo"><br>
+        <label *ngIf=" formGroup1.get('Sueldo').hasError('required')" [ngClass] = "'error'">Sueldo obligatorio. </label>
+        <label *ngIf=" formGroup1.get('Sueldo').hasError('min')" [ngClass] = "'error'">El sueldo no puede ser negativo. </label>
+    </div>
+</div>
+    <div id="botones">
+        <input type="submit" class="button" value="Añadir Trabajador" [disabled]="formGroup1.invalid">
+        <button (click)="rVisualizar()" class="button">Visualizar Trabajadores</button>
+</div>
+</form>
+</div>
+<!--Trabajador._id = req.body._id
+        Trabajador.Nombre = req.body.Nombre
+        Trabajador.Apellidos = req.body.Apellidos
+        Trabajador.FechaNac = req.body.FechaNac
+        Trabajador.Ocupacion = req.body.Ocupacion
+        Trabajador.Sueldo = req.body.Sueldo-->

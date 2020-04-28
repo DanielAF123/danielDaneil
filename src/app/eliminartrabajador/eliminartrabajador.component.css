@@ -1,0 +1,47 @@
+#patrones{
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns:auto auto auto;
+    justify-content: space-evenly;
+}
+#botones{
+    grid-column: 1/4;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+.button{
+    font-size: 25px;
+}
+.patron{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.label{
+    font-size: 1em;
+}
+.datagrid{
+    font-size: 1em;
+    margin: 5px;
+}
+#lista li{
+    border: 3px solid #80141C; 
+    border-radius: 14%;
+    text-align: center;
+}
+#lista li span{
+    color: #80141C;
+}
+#divLista{
+    width: 8%;
+    height: 20vh;
+    overflow: scroll;
+    background-color: #0E0E10;
+    border: 2px solid #fff;
+    border-radius: 4%;
+}
+#anterior{
+    display: none;
+}

@@ -1,0 +1,32 @@
+label{
+    font-size: 1.8em;
+    margin: 10px;
+}
+#fomulario{
+    margin-top: 10px;
+}
+#formulariof{
+    width: 50%;
+}
+.div{
+    display: flex;
+    flex-direction: column;
+}
+#fondo{
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+    background-color: #0E0E10;
+}
+#botones{
+    display: flex;
+    margin-top: 100px;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.button{
+    font-size: 1.5em;
+}
+input{
+    font-size: 1.4em;
+}

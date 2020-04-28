@@ -1,0 +1,153 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+    BOTON
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+.button {
+	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+	background-color:#fe1a00;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:8px 29px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #b23e35;
+}
+.button:hover {
+	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+	background-color:#ce0100;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+body{
+    background-color: #18181B;
+}
+/*
+    TABLA
+*/
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; }
+ .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 2px solid #991821; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+ .datagrid table td, .datagrid table th { padding: 4px 5px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C) );background:-moz-linear-gradient( center top, #991821 5%, #80141C 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');background-color:#991821; color:#FFFFFF; font-size: 16px; font-weight: bold; border-left: 0px solid #B01C26; } 
+ .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #80141C; border-left: 1px solid #F7CDCD;font-size: 12px;font-weight: bold; }
+ .datagrid table tbody .alt td { background: #F7CDCD; color: #80141C; }
+ .datagrid table tbody td:first-child { border-left: none; }
+ .datagrid table tbody tr:last-child td { border-bottom: none; }
+ .datagrid table tfoot td div { border-top: 1px solid #991821;background: #F7CDCD;} 
+ .datagrid table tfoot td { padding: 0; font-size: 12px } 
+ .datagrid table tfoot td div{ padding: 2px; }
+ .datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }
+ .datagrid table tfoot  li { display: inline; }
+ .datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 2px solid #991821;-webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C) );background:-moz-linear-gradient( center top, #991821 5%, #80141C 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');background-color:#991821; }
+ .datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #80141C; color: #FFFFFF; background: none; background-color:#991821;}
+ div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }
+ .datagrid table tbody tr { -webkit-transition: all 0.3s 0s linear;
+	-moz-transition: all 0.5s 0s linear;
+	-o-transition: all 0.5s 0s linear;
+	transition: all 0.5s 0s linear; }
+	.datagrid table tbody tr:hover {
+		background-color: #e5bec1;
+		cursor: pointer;
+	}
+
+/*
+    INPUTS
+*/
+.input{
+	display: inline-block;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+float: none;
+z-index: auto;
+width: auto;
+height: auto;
+position: static;
+cursor: default;
+opacity: 1;
+margin: 0;
+padding: 10px 20px;
+overflow: visible;
+border: 0px solid #b7b7b7;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+font: normal 16px/normal Arial, Helvetica, sans-serif;
+color: #EEEEF0;
+-o-text-overflow: clip;
+text-overflow: clip;
+background: rgba(58,58,61,1);
+-webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+-webkit-transform: none;
+transform: none;
+-webkit-transform-origin: 50% 50% 0;
+transform-origin: 50% 50% 0;
+cursor: text;
+}
+.input:focus{
+	border: 2px solid #80141C;
+	background-color: #000000;
+	cursor: text;
+}
+/*
+	LABEL
+*/
+.label{
+	font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+letter-spacing: 0px;
+word-spacing: 2px;
+color: #EEEEF0;
+font-weight: 400;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+-ms-transition: all 0.1s linear;
+-o-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+.label:hover{
+	color: #80141C;
+}
+/*
+    Configuraciones globales
+*/
+*{
+	color: #EEEEF0;
+	/*Eliminar borde azul al hacer focus en objeto*/
+	outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/*
+	SCROLL
+*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(31,31,35,0); 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 2px 6px #3a3a3d;
+}

@@ -1,0 +1,15 @@
+<div id="anadir">
+    <form (ngSubmit)="eliminarUsuario(Contrasena)" [formGroup]="formGroup1" autocomplete="off">
+    <div id="formulario">
+        <h2>Ingresa la contraseña para confirmar</h2>
+        <div class="div">
+            <label for="Contrasena" class="label">Contraseña</label>
+            <input type="password" class="input" #Contrasena formControlName="Contrasena" id="Contrasena"><br>
+            <label *ngIf=" formGroup1.get('Contrasena').hasError('required')" [ngClass] = "'error'">Contraseña obligatorio. </label>
+        </div>
+        <div id="botones">
+            <input type="submit" class="button" value="Eliminar Usuario" [disabled]="formGroup1.invalid">
+        </div>
+    </div>
+    </form>
+</div>

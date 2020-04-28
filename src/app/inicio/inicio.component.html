@@ -1,0 +1,22 @@
+<div id="anadir">
+    <form (ngSubmit)="inicioDeSesion(Nombre,Contrasena)" [formGroup]="formGroup1" autocomplete="off">
+    <div id="formulario">
+        <div class="div">
+            <label for="Nombre" class="label">Nombre</label>
+            <input type="text" class="input" #Nombre  formControlName="Nombre" id="Nombre"><br>
+            <label *ngIf=" formGroup1.get('Nombre').hasError('required')" [ngClass] = "'error'">Nombre obligatorio. </label>
+        </div>
+    
+        <div class="div">
+            <label for="Contrasena" class="label">Contraseña</label>
+            <input type="password" class="input" #Contrasena formControlName="Contrasena" id="Contrasena"><br>
+            <label *ngIf=" formGroup1.get('Contrasena').hasError('required')" [ngClass] = "'error'">Apellidos obligatorio. </label>
+        </div>
+        <div id="botones">
+            <input type="submit" class="button" value="Iniciar Sesion" [disabled]="formGroup1.invalid">
+            <input class="button" (click)="anadirUsuario()" value="Registrarse">
+            <input class="button" (click)="recordarUsuario()" value="Recordar Contrasena">
+        </div>
+    </div>
+    </form>
+</div>

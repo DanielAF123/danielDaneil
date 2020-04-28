@@ -1,0 +1,132 @@
+/*
+    HEADER
+*/
+header{
+    position: fixed;
+    width: 100%;
+    background-color: #1F1F23;
+    height: 45px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 10% 60% 30%;
+    z-index: 4;
+}
+/*
+    DIV de Informacion
+*/
+#info{
+    display: flex;
+}
+#info a{
+    padding-left: 1.4%;
+    padding-right: 1.4%;
+    padding-top: 1.4%;
+    text-decoration: none;
+    transition: background-color 1s ease-in;
+}
+#info a:hover, #info a.selected{
+    background-color: rgba(255,255,255,0.8);
+    transition:  background-color 0.01s;
+    color: #000;
+}
+/*
+    DIV de usuario
+*/
+#usuario{
+    display: flex;
+    justify-content: flex-end;
+}
+#usuario a{
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 1s ease-in;
+}
+#usuario a:hover, #info a.selected{
+    background-color: rgba(255,255,255,0.8);
+    transition:  background-color 0.01s;
+    color: #000;
+}
+/*
+    DIV de favicon
+*/
+#favicon{
+    position: relative;
+    bottom: 10%;
+}
+#favicon>*{
+    margin: 8%;
+}
+/*
+    ASIDE NAV
+*/
+aside{
+    position: fixed;
+    top: 48px;
+    width: 240px;
+    background-color: #1F1F23;
+    z-index: 3;
+
+}
+/*
+    lista aside
+*/
+#listaNav{
+    width: 100%;
+}
+#listaNav li{
+    border-bottom: 1px solid #000;
+    transition: background-color 1s ease-in;
+    color: #fff;
+}
+#listaNav li:hover, #listaNav li.selected{
+    background-color: rgba(255,255,255,0.8);
+    transition:  background-color 0.01s;
+    color: #000;
+}
+#listaNav a{
+    text-decoration:none;
+}
+#listaNav a li{
+    text-transform: capitalize;
+    font-size: 1.5em;
+    padding-left: 10px;
+}
+/*
+    Rutas
+*/
+#rutas{
+    position: absolute;
+    background-color: #0E0E10;
+    width: 87.4%;
+    left: 240px;
+    top: 88px;
+    z-index: -1;
+}
+/*
+    Pagina actual
+*/
+#pagina{
+    color: #656568;
+    background-color: #0E0E10;
+    position: fixed;
+    left: 240px;
+    top: 48px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    width: 87.4%;
+    font-size: 40px;
+    line-height: 0.8;
+    z-index: 3;
+    border-bottom: 1px solid grey;
+}
+/*
+    Fondo
+*/
+#fondo{
+    position: fixed;
+    background-color: #18181B;
+    width: 100%;
+    height: 88px;
+    z-index: 2;
+}

@@ -1,0 +1,31 @@
+#patrones{
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns:auto auto auto;
+    justify-content: space-evenly;
+}
+#botones{
+    grid-column: 1/4;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+.button{
+    font-size: 25px;
+}
+.patron{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.label{
+    font-size: 1em;
+}
+.datagrid{
+    font-size: 1em;
+    margin: 5px;
+}
+#anterior{
+    display: none;
+}

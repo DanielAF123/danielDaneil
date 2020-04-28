@@ -1,0 +1,28 @@
+#anadir{
+    padding-top: 5%;
+    justify-content: center;
+    
+}
+#botones{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.div{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+.button{
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+input{
+    font-size: 1.4em;
+}
+label{
+    font-size: 1.8em;
+    margin: 10px;
+}

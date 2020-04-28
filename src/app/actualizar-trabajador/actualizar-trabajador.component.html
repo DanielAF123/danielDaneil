@@ -1,0 +1,50 @@
+<div id="fondo">
+<form (ngSubmit)="actualizarTrabajador(id.value,Nombre.value,Apellidos.value,FechaNac.value,Ocupacion.value,Sueldo.value)" [formGroup]="formActualizar" autocomplete="off" id="formulariof">
+    <div id="fomulario">
+    <div class="div">
+        <label for="id" class="label">id</label>
+        <input type="text" class="input" disabled formControlName="id" #id id="id"><br>
+        <label *ngIf=" formActualizar.get('id').hasError('required')" [ngClass] = "'error'">Id obligatorio. </label>
+        <label *ngIf=" formActualizar.get('id').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+    
+    <div class="div">
+        <label for="Nombre" class="label">Nombre</label>
+        <input type="text" class="input" #Nombre  formControlName="Nombre" id="Nombre"><br>
+        <label *ngIf=" formActualizar.get('Nombre').hasError('required')" [ngClass] = "'error'">Nombre obligatorio. </label>
+        <label *ngIf=" formActualizar.get('Nombre').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div class="div">
+        <label for="Apellidos" class="label">Apellidos</label>
+        <input type="text" class="input" #Apellidos formControlName="Apellidos" id="Apellidos"><br>
+        <label *ngIf=" formActualizar.get('Apellidos').hasError('required')" [ngClass] = "'error'">Apellidos obligatorio. </label>
+        <label *ngIf=" formActualizar.get('Apellidos').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div class="div">
+        <label for="FechaNac" class="label">FechaNac</label>
+        <input type="date" class="input" #FechaNac formControlName="FechaNac" id="FechaNac"><br>
+        <label *ngIf=" formActualizar.get('FechaNac').hasError('required')" [ngClass] = "'error'">FechaNac obligatorio. </label>
+    </div>
+
+    <div class="div">
+        <label for="Ocupacion" class="label">Ocupacion</label>
+        <input type="text" class="input" #Ocupacion formControlName="Ocupacion" id="Ocupacion"><br>
+        <label *ngIf=" formActualizar.get('Ocupacion').hasError('required')" [ngClass] = "'error'">Ocupacion obligatorio. </label>
+        <label *ngIf=" formActualizar.get('Ocupacion').hasError('pattern')" [ngClass] = "'error'">El patron no es correcto. </label>
+    </div>
+
+    <div class="div">
+        <label for="Sueldo" class="label">Sueldo</label>
+        <input type="number" class="input" #Sueldo formControlName="Sueldo" id="Sueldo" min="0"><br>
+        <label *ngIf=" formActualizar.get('Sueldo').hasError('required')" [ngClass] = "'error'">Sueldo obligatorio. </label>
+        <label *ngIf=" formActualizar.get('Sueldo').hasError('min')" [ngClass] = "'error'">El sueldo no puede ser negativo. </label>
+    </div>
+    <div id="botones">
+    <input type="submit" class="button" value="Actualizar Trabajador" [disabled]="formActualizar.invalid">
+    <button (click)="rVisualizar()" class="button">Atras</button>
+</div>
+</div>
+</form>
+</div>

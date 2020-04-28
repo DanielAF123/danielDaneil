@@ -1,0 +1,79 @@
+
+<form (ngSubmit)="buscarTrabajadorNombre(campoBusquedaNombre.value,campoBusquedaApellidos.value,campoBusquedaOcupacion.value,campoBusquedaSueldo.value,campoBusquedaInicio.value,campoBusquedaFinal.value)" [formGroup]="formBusqueda" autocomplete="off">
+    <div id="patrones">
+    <div class="patron">
+        <label for="Nombre" class="label">Busqueda por nombre</label>
+        <input type="text" class="input" formControlName="campoBusquedaNombre" #campoBusquedaNombre id="Nombre"><br>
+    </div>
+    <div class="patron">
+        <label for="Apellidos" class="label">Busqueda por Apellidos</label>
+        <input type="text" class="input"  #campoBusquedaApellidos id="Apellidos"><br>
+    </div>
+    <div class="patron">
+        <label for="Ocupacion" class="label">Busqueda por Ocupacion</label>
+        <input type="text" class="input"  #campoBusquedaOcupacion id="Ocupacion"><br>
+    </div>
+    <div class="patron">
+        <label for="Sueldo" class="label">Busqueda por Sueldo</label>
+        <input type="number" class="input"  formControlName="campoBusquedaSueldo" #campoBusquedaSueldo id="Sueldo"><br>
+        <label *ngIf="formBusqueda.get('campoBusquedaSueldo').hasError('min')" [ngClass] = "'error'">El sueldo no puede ser negativo. </label>
+    </div>
+    <div class="patron">
+        <label for="Inicio" class="label">Busqueda por Fecha de nacimiento Inicio</label>
+        <input type="date" class="input" #campoBusquedaInicio id="Inicio"><br>
+    </div>
+    <div class="patron">
+        <label for="Final" class="label">Busqueda por Fecha de nacimiento Final</label>
+        <input type="date" class="input" #campoBusquedaFinal id="Final"><br>
+    </div>
+    <div id="botones">
+    <input type="submit" class="button" value="Buscar Trabajador" [disabled]="formBusqueda.invalid">
+    <button class="button" (click)="anadirTrabajador()">Añadir trabajador</button>
+</div>
+</div>
+</form>
+
+<h3 class="label">
+    Para realizar una actualización haga click sobre uno de los elementos de la tabla
+</h3>
+<div class="datagrid">
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>OCUPACION</th>
+            <th>SUELDO</th>
+            <th>FECHA DE NACIMIENTO</th>
+            <th>FECHA DE INICIO</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7">
+                <div id="paging">
+                    <ul>
+                        <li><a id="anterior" #anterior (click)="paginacion(anterior,siguiente,'anterior',numeroPag)"><span>Anterior</span></a></li>
+                        <li><a ><span #numeroPag>1</span></a></li>
+                        <li><a id="siguiente" #siguiente (click)="paginacion(anterior,siguiente,'siguiente',numeroPag)"><span>Siguiente</span></a></li>
+                    </ul>
+                </div>
+            </tr>
+        </tfoot>
+    <tbody *ngIf="trabajadores.length>0; else empty">
+            <tr #tr *ngFor="let trabajador of trabajadores" (click)="seleccionarId(tr)">
+                <td>{{trabajador._id}}</td>
+                <td>{{trabajador.Nombre}}</td>
+                <td>{{trabajador.Apellidos}}</td>
+                <td>{{trabajador.Ocupacion}}</td>
+                <td>{{trabajador.Sueldo}}</td>
+                <!--Pipe para formatear la fecha en la salida-->
+                <td>{{trabajador.FechaNac | date:'dd-MM-yyyy'}}</td>
+                <td>{{trabajador.FechaDeInicio | date:'dd-MM-yyyy HH:mm:ss-SS' }}</td>
+            </tr>
+    </tbody>
+    </table>
+</div>
+<ng-template #empty> <i>No trabajadores yet</i> </ng-template>
+
