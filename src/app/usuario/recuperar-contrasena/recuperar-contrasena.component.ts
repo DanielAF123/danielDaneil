@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { Usuario } from '../../usuario';
 import { ApiUsuarioService } from '../../api-usuario.service'
 import { ContrasenaC } from '../../contrasena'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-recuperar-contrasena',
@@ -36,13 +37,19 @@ export class RecuperarContrasenaComponent implements OnInit {
         this.ApiUsuarioService.buscarUsuarioEmail(NombreEmail.value).subscribe(async data =>{
           res=data;
           if(res.length==0){
-            sweetAlert({
+            /*sweetAlert({
               title: "No se ha podido iniciar sesion",
               text: "Usuario inexistente",
               icon: "error",
               buttons: {aceptar:{text:"Aceptar",value:true}},
               dangerMode: true,
-            }) 
+            })*/ 
+            Swal.fire({
+              title: "No se ha podido iniciar sesion",
+              text: "Usuario inexistente",
+              icon: "error",
+              confirmButtonText: 'Aceptar',
+            })
           }else{
             //Email correcto
             this.email(res)
@@ -71,20 +78,32 @@ export class RecuperarContrasenaComponent implements OnInit {
             })
             this.ApiUsuarioService.recuperarContrasena(numero,res[0].Email).subscribe(async data =>{
               if(data["res"]==false){
-                sweetAlert({
+                /*sweetAlert({
                   title: "Error",
                   text: "error al enviar el correo",
                   icon: "error",
                   buttons: {aceptar:{text:"Aceptar",value:true}},
                   dangerMode: true,
-                }) 
+                })*/ 
+                Swal.fire({
+                  title: "Error",
+                  text: "error al enviar el correo",
+                  icon: "error",
+                  confirmButtonText: 'Aceptar',
+                })
               }else{
-                sweetAlert({
+                /*sweetAlert({
               title: "Correcto",
               text: "Contraseña actualizada",
               icon: "success",
               buttons: {aceptar:{text:"Aceptar",value:true}},
               dangerMode: true,
+            })*/
+            Swal.fire({
+              title: "Correcto",
+              text: "Contraseña actualizada",
+              icon: "success",
+              confirmButtonText: 'Aceptar',
             })
             this.router.navigate(["/"]) 
               }

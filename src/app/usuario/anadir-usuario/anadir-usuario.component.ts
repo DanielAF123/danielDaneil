@@ -5,6 +5,7 @@ import { Usuario } from '../../usuario';
 import { ApiUsuarioService } from '../../api-usuario.service'
 import * as bcrypt from 'bcryptjs';
 import { ContrasenaC } from '../../contrasena'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-anadir-usuario',
@@ -47,12 +48,17 @@ export class AnadirUsuarioComponent implements OnInit {
         this.ApiUsuarioService.anadirUsuario(usuario).subscribe(data =>{
           console.log(data["res"])
           if(data["res"]==false){
-            sweetAlert({
+            /*sweetAlert({
               title: "Error al registrarse",
               icon: "error",
               buttons: {aceptar:{text:"Aceptar",value:true}},
               dangerMode: true,
-            }) 
+            }) */
+            Swal.fire({
+              title: "Error al registrarse",
+              icon: "error",
+              confirmButtonText: 'Aceptar',
+            })
           }else{
             this.ApiUsuarioService.buscarUsuarioNombre(Nombre.value).subscribe(data =>{
               res=data;
@@ -63,23 +69,35 @@ export class AnadirUsuarioComponent implements OnInit {
           }
         })
       }else{
-        sweetAlert({
+        /*sweetAlert({
           title: "Error al registrarse",
           text: "Direccion de correo ya en uso",
           icon: "error",
           buttons: {aceptar:{text:"Aceptar",value:true}},
           dangerMode: true,
+        })*/
+        Swal.fire({
+          title: "Error al registrarse",
+          text: "Direccion de correo ya en uso",
+          icon: "error",
+          confirmButtonText: 'Aceptar',
         })
       }
         })
       }else{
-        sweetAlert({
+        /*sweetAlert({
           title: "Error al registrarse",
           text: "Nombre de usuario ya en uso",
           icon: "error",
           buttons: {aceptar:{text:"Aceptar",value:true}},
           dangerMode: true,
-        }) 
+        }) */
+        Swal.fire({
+          title: "Error al registrarse",
+          text: "Nombre de usuario ya en uso",
+          icon: "error",
+          confirmButtonText: 'Aceptar',
+        })
       }
     })
   }

@@ -2,9 +2,9 @@ import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormsModule, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { identifierModuleUrl } from '@angular/compiler';
-import sweetAlert from 'sweetalert'
 import { Global } from '../global/global'
 import { Router } from '@angular/router'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-eliminartrabajador',
@@ -75,7 +75,7 @@ export class EliminartrabajadorComponent implements OnInit {
   }
 
   eliminarTrabajador(){
-  sweetAlert({
+  /*sweetAlert({
     title: "¿Eliminar Trabajadores?",
     text: "Se eliminaran completamente de la aplicación",
     icon: "warning",
@@ -112,7 +112,46 @@ export class EliminartrabajadorComponent implements OnInit {
   }
   }
     }
+  });*/
+  Swal.fire({
+    title: "¿Eliminar Trabajadores?",
+    text: "Se eliminaran completamente de la aplicación",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: 'Aceptar',
+    cancelButtonText: 'Cancelar'
+  }).then((resultado) =>{
+    console.log(resultado)
+    if(resultado.value==true){
+      let valor;
+    console.log(this.ids.length)
+    if(this.ids.length>0){
+    for(var i=0;i<this.ids.length;i++){
+    this.apiService.eliminarTrabajador(this.ids[i]).subscribe(data =>{
+      valor=data;
+      if(valor.res==false){
+        console.log("No se ha podido eliminar el trabajador");  
+      }else{
+        console.log("Trabajador eliminado");  
+        if(i==this.ids.length){
+    var arrayFechaI = (this.datos.FNI).split("-");
+    var arrayFechaF = (this.datos.FNF).split("-");
+          this.apiService.buscarTrabajadorNombre(this.datos.Nombre,this.datos.Apellidos,this.datos.Ocupacion,this.datos.Sueldo,new Date(parseInt(arrayFechaI[0]),parseInt(arrayFechaI[1])-1,parseInt(arrayFechaI[2])+1),new Date(parseInt(arrayFechaF[0]),parseInt(arrayFechaF[1])-1,parseInt(arrayFechaF[2])+1),0).subscribe(data =>{this.trabajadores = data,console.log(this.trabajadores)});
+          this.apiService.numeroDeTrabajadores(this.datos.Nombre,this.datos.Apellidos,this.datos.Ocupacion,this.datos.Sueldo,new Date(parseInt(arrayFechaI[0]),parseInt(arrayFechaI[1])-1,parseInt(arrayFechaI[2])+1),new Date(parseInt(arrayFechaF[0]),parseInt(arrayFechaF[1])-1,parseInt(arrayFechaF[2])+1)).subscribe(data =>{this.totalDeTrabajadores = data['res']
+          this.numeroTotalPag()
+            this.reiniciarNumeroPag()
+            this.comprobarBotones()
   });
+  
+          this.ids=[];
+          //AL ELMINIAR NO ACTUALIZA BIEN LA PAGINACION
+        }
+      }
+    });
+  }
+  }
+    }
+  }); 
   }
 
   mostrarDato(tr){

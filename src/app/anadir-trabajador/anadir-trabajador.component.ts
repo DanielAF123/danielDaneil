@@ -5,6 +5,7 @@ import { FormsModule, FormBuilder, FormGroup, FormControl, Validators} from '@an
 import { Router } from '@angular/router'
 import { identifierModuleUrl } from '@angular/compiler';
 import { Global } from '../global/global'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-anadir-trabajador',
@@ -42,14 +43,19 @@ export class AnadirTrabajadorComponent implements OnInit {
     this.apiService.anadirTrabajador(Trabajador1).subscribe(data =>{
       valor=data;
       if(valor.res==false){
-        sweetAlert({
+        /*sweetAlert({
           title: "No se ha podido añadir el trabajador",
           icon: "error",
           buttons: {aceptar:{text:"Aceptar",value:true}},
           dangerMode: true,
+        })*/
+        Swal.fire({
+          title: "No se ha podido añadir el trabajador",
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
         })
       }else{
-        sweetAlert({
+        /*sweetAlert({
           title: "Trabajador añadido",
           text: "¿Añadir otro usuario?",
           icon: "success",
@@ -58,6 +64,21 @@ export class AnadirTrabajadorComponent implements OnInit {
         }).then((resultado) =>{
           console.log(resultado)
           if(resultado==true){
+            this.router.navigate(['/visualizarTrabajador']);
+          }else{
+            formulario.reset();
+          }
+        })*/
+        Swal.fire({
+          title: "Trabajador añadido",
+          text: "¿Añadir otro usuario?",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonText: 'No',
+          cancelButtonText: 'Si'
+        }).then((resultado) =>{
+          console.log(resultado)
+          if(resultado.value==true){
             this.router.navigate(['/visualizarTrabajador']);
           }else{
             formulario.reset();

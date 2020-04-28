@@ -5,6 +5,7 @@ import { Usuario } from '../usuario';
 import { ApiUsuarioService } from '../api-usuario.service'
 import { Global } from '../global/global'
 import { ContrasenaC } from '../contrasena'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-inicio',
@@ -39,13 +40,19 @@ export class InicioComponent implements OnInit {
         this.ApiUsuarioService.buscarUsuarioEmail(NombreEmail.value).subscribe(async data =>{
           res=data;
           if(res.length==0){
-            sweetAlert({
+            /*sweetAlert({
               title: "No se ha podido iniciar sesion",
               text: "Usuario inexistente",
               icon: "error",
               buttons: {aceptar:{text:"Aceptar",value:true}},
               dangerMode: true,
-            }) 
+            })*/
+            Swal.fire({
+              title: 'No se ha podido iniciar sesion',
+              text: 'Usuario inexistente',
+              icon: 'error',
+              confirmButtonText: 'Aceptar',
+            })
           }else{
             if(await ContrasenaC.compararContrasenas(Contrasena.value,res[0].Contrasena)){
               usuario = new Usuario(res[0]._id,res[0].NombreUsuario,res[0].Contrasena,res[0].Email);
@@ -53,12 +60,18 @@ export class InicioComponent implements OnInit {
               sessionStorage.setItem('usuario', JSON.stringify({_id: usuario._id,NombreUsuario: usuario.NombreUsuario,Contrasena: usuario.Contrasena,Email: usuario.Email}));
               this.router.navigate(['/visualizarTrabajador']);
             }else{
-              sweetAlert({
+              /*sweetAlert({
                 title: "No se ha podido iniciar sesion",
                 text: "Contraseña incorrecta",
                 icon: "error",
                 buttons: {aceptar:{text:"Aceptar",value:true}},
                 dangerMode: true,
+              })*/
+              Swal.fire({
+                title: 'No se ha podido iniciar sesion',
+                text: "Contraseña incorrecta",
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
               })
             }
           }
@@ -72,12 +85,18 @@ export class InicioComponent implements OnInit {
           this.global.usuario=usuario;
           this.router.navigate(['/visualizarTrabajador']);
         }else{
-          sweetAlert({
+          /*sweetAlert({
             title: "No se ha podido iniciar sesion",
             text: "Contraseña incorrecta",
             icon: "error",
             buttons: {aceptar:{text:"Aceptar",value:true}},
             dangerMode: true,
+          })*/
+          Swal.fire({
+            title: 'No se ha podido iniciar sesion',
+            text: "Contraseña incorrecta",
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
           })
         }
         

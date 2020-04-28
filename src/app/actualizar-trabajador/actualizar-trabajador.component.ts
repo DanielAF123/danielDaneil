@@ -4,6 +4,7 @@ import { ApiService } from '../api.service';
 import { Trabajador } from '../trabajador';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Global } from '../global/global'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-actualizar-trabajador',
@@ -74,14 +75,19 @@ export class ActualizarTrabajadorComponent implements OnInit {
     this.apiService.actualizarTrabajador(Trabajador1).subscribe(data =>{
       valor=data;
       if(valor.res==false){
-        sweetAlert({
+        /*sweetAlert({
           title: "No se ha podido actualizar el trabajador",
           icon: "error",
           buttons: {aceptar:{text:"Aceptar",value:true}},
           dangerMode: true,
+        })*/
+        Swal.fire({
+          title: "No se ha podido actualizar el trabajador",
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
         })  
       }else{
-        sweetAlert({
+        /*sweetAlert({
           title: "Trabajador actualizado",
           text: "Se te redirigira hacia la ventada de visualizacion de Trabajadores",
           icon: "success",
@@ -90,6 +96,18 @@ export class ActualizarTrabajadorComponent implements OnInit {
         }).then((resultado) =>{
           console.log(resultado)
           if(resultado==true){
+            this.rVisualizar();
+          }
+        })*/
+        Swal.fire({
+          title: "Trabajador actualizado",
+          text: "Se te redirigira hacia la ventada de visualizacion de Trabajadores",
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+        }).then((resultado) =>{
+          console.log(resultado)
+          if(resultado.value==true){
             this.rVisualizar();
           }
         })

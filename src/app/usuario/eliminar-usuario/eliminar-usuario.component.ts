@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { Usuario } from '../../usuario';
 import { ApiUsuarioService } from '../../api-usuario.service'
 import { ContrasenaC } from '../../contrasena'
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -31,7 +32,7 @@ export class EliminarUsuarioComponent implements OnInit {
     let id = JSON.parse(sessionStorage.getItem("usuario"))._id
     this.ApiUsuarioService.buscarUsuarioId(id).subscribe(async data =>{
       if(await ContrasenaC.compararContrasenas(Contrasena.value,data[0].Contrasena)){
-        sweetAlert({
+        /*sweetAlert({
           title: "Contraseña correcta",
           text: "¿Estas seguro de eliminar tu usuario?",
           icon: "success",
@@ -55,13 +56,45 @@ export class EliminarUsuarioComponent implements OnInit {
           }else{
 
           }
+        })*/
+        Swal.fire({
+          title: 'No se ha podido iniciar sesion',
+          text: "Contraseña incorrecta",
+          icon: 'error',
+          showCancelButton: true,
+          confirmButtonText: 'Eliminar usuario',
+          cancelButtonText: 'No eliminar'
+        }).then((resultado) =>{
+          console.log(resultado)
+          if(resultado.value==true){
+            this.ApiUsuarioService.eliminarUsuario(data[0]._id).subscribe(data =>{
+              if(data[""]==false){
+                /*sweetAlert({
+                  title: "Error al eliminar el usuario",
+                  icon: "error",
+                  buttons: {aceptar:{text:"Aceptar",value:true}},
+                  dangerMode: true,
+                })*/
+                Swal.fire({
+                  title: 'No se ha podido iniciar sesion',
+                  text: "Contraseña incorrecta",
+                  icon: 'error',
+                  confirmButtonText: 'Aceptar',
+                })        
+              }else{
+                this.router.navigate(['/cerrarSesion']);
+              }
+            })
+          }else{
+
+          }
         })
       }else{
-        sweetAlert({
-          title: "Contraseña erronea",
-          icon: "error",
-          buttons: {aceptar:{text:"Aceptar",value:true}},
-          dangerMode: true,
+        Swal.fire({
+          title: 'No se ha podido iniciar sesion',
+          text: "Contraseña incorrecta",
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
         }) 
       }
     })

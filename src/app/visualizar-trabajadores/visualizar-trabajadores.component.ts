@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
-import sweetAlert from 'sweetalert'
+import Swal from 'sweetalert2'
 import { Global } from '../global/global';
 
 
@@ -84,7 +84,7 @@ export class VisualizarTrabajadoresComponent implements OnInit {
   }
 
   actualizar(){
-    sweetAlert({
+    /*sweetAlert({
       title: "Actualizar este usuario"+this.id,
       text: "Se perdera la busqueda realizada",
       icon: "warning",
@@ -95,12 +95,25 @@ export class VisualizarTrabajadoresComponent implements OnInit {
       if(resultado==true){
         this.router.navigate(['/actualizarTrabajador'],{queryParams: {id: this.id}});
       }
+    })*/
+    Swal.fire({
+      title: "Actualizar este usuario"+this.id,
+      text: "Se perdera la busqueda realizada",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+    cancelButtonText: 'Cancelar'
+    }).then((resultado) =>{
+      console.log(resultado)
+      if(resultado.value==true){
+        this.router.navigate(['/actualizarTrabajador'],{queryParams: {id: this.id}});
+      }
     })
       
   }
 
   anadirTrabajador(){
-    sweetAlert({
+    /*sweetAlert({
       title: "¿Salir de esta pagina?",
       text: "Se perdera la busqueda realizada",
       icon: "warning",
@@ -109,6 +122,19 @@ export class VisualizarTrabajadoresComponent implements OnInit {
     }).then((resultado) =>{
       console.log(resultado)
       if(resultado==true){
+        this.router.navigate(['/anadirTrabajador']);
+      }
+    })*/
+    Swal.fire({
+      title: "¿Salir de esta pagina?",
+      text: "Se perdera la busqueda realizada",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((resultado) =>{
+      console.log(resultado)
+      if(resultado.value==true){
         this.router.navigate(['/anadirTrabajador']);
       }
     })

@@ -5,6 +5,7 @@ import { Usuario } from '../../usuario';
 import { ApiUsuarioService } from '../../api-usuario.service'
 import { Global } from '../../global/global'
 import { ContrasenaC } from '../../contrasena'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -46,7 +47,7 @@ export class ActualizarUsuarioComponent implements OnInit {
     let usuario = new Usuario(this.usuario._id,NombreUsuario.value,this.usuario.Contrasena,Email.value);
     this.ApiUsuarioService.actualizarUsuario(usuario).subscribe(data =>{
       if(data["res"]!==false){
-        sweetAlert({
+        /*sweetAlert({
           title: "Usuario actualizado",
           icon: "success",
           buttons: {aceptar:{text:"Aceptar",value:true}},
@@ -55,14 +56,29 @@ export class ActualizarUsuarioComponent implements OnInit {
           if(resultado==true){
             sessionStorage.setItem('usuario', JSON.stringify({_id: usuario._id,NombreUsuario: NombreUsuario.value,Contrasena: usuario.Contrasena,Email: Email.value}));
           }
+        })*/
+        Swal.fire({
+          title: "Usuario actualizado",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+        }).then((resultado) =>{
+          if(resultado.value==true){
+            sessionStorage.setItem('usuario', JSON.stringify({_id: usuario._id,NombreUsuario: NombreUsuario.value,Contrasena: usuario.Contrasena,Email: Email.value}));
+          }
         })
       }else{
-        sweetAlert({
+        /*sweetAlert({
           title: "No se ha podido actualizar el usuario",
           icon: "error",
           buttons: {aceptar:{text:"Aceptar",value:true}},
           dangerMode: true,
-        })  
+        })*/  
+        Swal.fire({
+          title: "No se ha podido actualizar el usuario",
+          icon: "error",
+          confirmButtonText: 'Aceptar',
+        })
       }
     });
   }
@@ -76,37 +92,59 @@ export class ActualizarUsuarioComponent implements OnInit {
             let usuarioActualizar = new Usuario(usuario._id,usuario.NombreUsuario,ContrasenaH,usuario.Email)
             this.ApiUsuarioService.actualizarUsuario(usuarioActualizar).subscribe(data =>{
               if(data["res"]==false){
-                sweetAlert({
+                /*sweetAlert({
                   title: "Error al cambiar la contraseña",
                   icon: "error",
                   buttons: {aceptar:{text:"Aceptar",value:true}},
                   dangerMode: true,
-                }) 
+                })*/ 
+                Swal.fire({
+                  title: "Error al cambiar la contraseña",
+                  icon: "error",
+                  confirmButtonText: 'Aceptar',
+                })
               }else{
-                sweetAlert({
+                /*sweetAlert({
                   title: "Exito",
                   text: "Contraseña cambiada",
                   icon: "success",
                   buttons: {aceptar:{text:"Aceptar",value:true}},
                   dangerMode: true,
-                });
+                });*/
+                Swal.fire({
+                  title: "Exito",
+                  text: "Contraseña cambiada",
+                  icon: "success",
+                  confirmButtonText: 'Aceptar',
+                })
               }
             })
           }else{
-            sweetAlert({
+            /*sweetAlert({
               title: "Las contraseñas no son iguales",
               icon: "error",
               buttons: {aceptar:{text:"Aceptar",value:true}},
               dangerMode: true,
-            }) 
+            })*/ 
+            Swal.fire({
+              title: "Las contraseñas no son iguales",
+              icon: "error",
+              confirmButtonText: 'Aceptar',
+            })
           }
         }else{
-          sweetAlert({
+          /*sweetAlert({
             title: "La contraseña actual no es correcta",
             icon: "error",
             buttons: {aceptar:{text:"Aceptar",value:true}},
             dangerMode: true,
-          }) 
+          })
+          */
+         Swal.fire({
+          title: "La contraseña actual no es correcta",
+            icon: "error",
+          confirmButtonText: 'Aceptar',
+        }) 
         }
     })
   }
