@@ -6,7 +6,7 @@ import { Usuario } from './usuario';
   providedIn: 'root'
 })
 export class ApiUsuarioService {
-  private urlApi='https://apiback123.herokuapp.com/';
+  private urlApi='https://apiback123.herokuapp.com';
 
   private headers = new HttpHeaders().set('Content-Type','application/json');
   constructor(private httpClient: HttpClient){

@@ -5,7 +5,7 @@ import { Trabajador } from './trabajador';
   providedIn: 'root'
 })
 export class ApiService {
-  private urlApi='https://apiback123.herokuapp.com/';
+  private urlApi='https://apiback123.herokuapp.com';
 
   private headers = new HttpHeaders().set('Content-Type','application/json');
   constructor(private httpClient: HttpClient){
