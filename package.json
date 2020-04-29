@@ -1,14 +1,6 @@
 {
   "name": "aplcicacion-final",
   "version": "0.0.0",
-  "architect": {
-    "build": {
-      "builder": "@angular-devkit/build-angular:browser",
-      "options": {
-        "outputPath": "dist/"
-      }
-    }
-  },
   "scripts": {
     "ng": "ng",
     "start": "node indexAngular.js",
