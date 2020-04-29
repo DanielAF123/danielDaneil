@@ -4,6 +4,8 @@ const app = express();
 //Archivos estaticos
 app.use(express.static(__dirname + '/dist/AplcicacionFinal/'));
 
+enableProdMode()
+
 app.listen(process.env.PORT || 8080);
 
 app.get('/[`\.]+$',function(req,res){
