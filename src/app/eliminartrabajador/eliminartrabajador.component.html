@@ -32,7 +32,7 @@
 </div>    
 </form>
 
-
+<p>Para eliminar trabajadores selecciona con un click los que quieras eliminar y despues presiona el boton</p>
 <div class="datagrid">
     <table>
     <thead>
@@ -72,7 +72,7 @@
     </tbody>
     </table>
 </div>
-<ng-template #empty> <i>No trabajadores yet</i> </ng-template>
+<ng-template #empty> <i>Busqueda vacia</i> </ng-template>
 <div id="divLista">
     <p>Ids para eliminar</p>
     <ul *ngIf="trabajadores.length>0; else empty" id="lista">
