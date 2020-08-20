@@ -24,7 +24,7 @@
     "@angular/router": "~9.0.7",
     "@types/bootbox": "^5.2.0",
     "@types/jquery": "^3.3.35",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootbox": "^5.4.0",
